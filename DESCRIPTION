@@ -1,18 +1,27 @@
 Package: blblm
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Linear Regression with Little Bag of Bootstraps
 Version: 0.1.0
-Author: Who wrote it
+Author: Yongshan Zheng
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: Linear Regression with Little Bag of Bootstraps
+    The users can do the linear regression with bootstraps and output the estimate coefficients and sigma.
+    It can also use parallelization if the user choose to use blblm_pl.
+    After generating the model, the users can use coef, sigma, confint, and predict to further explore the model.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
 Imports: 
     purrr,
+    furrr,
+    future,
+    readr,
+    vroom,
     magrittr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
+VignetteBuilder: knitr

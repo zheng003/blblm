@@ -2,12 +2,12 @@
 % Please edit documentation in R/blblm.R
 \docType{package}
 \name{blblm-package}
-\alias{blblm}
-\alias{blblm-package}
-\title{blblm: What the Package Does (Title Case)}
+\title{blblm: Linear Regression with Little Bag of Bootstraps}
 \description{
-More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Linear Regression with Little Bag of Bootstraps
+    The users can do the linear regression with bootstraps and output the estimate coefficients and sigma.
+    It can also use parallelization if the user choose to use blblm_pl.
+    After generating the model, the users can use coef, sigma, confint, and predict to further explore the model.
 }
 \details{
 Linear Regression with Little Bag of Bootstraps
