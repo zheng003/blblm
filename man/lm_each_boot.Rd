@@ -9,7 +9,7 @@ lm_each_boot(formula, data, n)
 \arguments{
 \item{formula}{fomula: V1~V2}
 
-\item{data}{data list}
+\item{data}{dataframe}
 
 \item{n}{total number of rows in data}
 }

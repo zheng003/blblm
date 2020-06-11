@@ -11,7 +11,7 @@ glm1(formula, family, data, freqs)
 
 \item{family}{a description of the error distribution and link function to be used in the model.}
 
-\item{data}{data list}
+\item{data}{dataframe}
 
 \item{freqs}{multinomially distributed random number vectors}
 }

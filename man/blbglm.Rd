@@ -2,7 +2,7 @@
 % Please edit documentation in R/blblm.R
 \name{blbglm}
 \alias{blbglm}
-\title{Logistic Regression with Little Bag of Bootstraps}
+\title{Generalized linear models with Little Bag of Bootstraps}
 \usage{
 blbglm(formula, family = gaussian, file, m = 10, B = 5000, cl = 1)
 }
@@ -23,5 +23,5 @@ blbglm(formula, family = gaussian, file, m = 10, B = 5000, cl = 1)
 list
 }
 \description{
-Logistic Regression with Little Bag of Bootstraps
+Generalized linear models with Little Bag of Bootstraps
 }

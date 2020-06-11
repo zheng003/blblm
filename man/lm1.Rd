@@ -9,7 +9,7 @@ lm1(formula, data, freqs)
 \arguments{
 \item{formula}{fomula: V1~V2}
 
-\item{data}{data list}
+\item{data}{dataframe}
 
 \item{freqs}{multinomially distributed random number vectors}
 }

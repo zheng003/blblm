@@ -11,7 +11,7 @@ glm_each_boot(formula, family, data, n)
 
 \item{family}{a description of the error distribution and link function to be used in the model.}
 
-\item{data}{data list}
+\item{data}{dataframe}
 
 \item{n}{total number of rows in data}
 }
