@@ -57,7 +57,7 @@ lm1 <- function(formula, data, freqs) {
 }
 ```
 
-For the function lm1, the formula needs to be provided by the user, and the data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function lm generates the linear model with weights of argument freqs. It returns a list of the estimated coefficients and sigma calculated by function blbsigma.
+For the function lm1, the formula needs to be provided by the user, and the data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function lm generates the linear model with weights of argument freqs. It returns the estimated coefficients as a double and returns the sigma calculated by function blbsigma.
 
 ```{r}
 blbcoef <- function(fit) {
@@ -73,6 +73,29 @@ blbsigma <- function(fit) {
 ```
 
 The function blbcoef extracts model coefficients from the model and returns a double of the coefficients. The function blbsigma calculated the sigma by the weighted residuals and returns it as a double.
+
+```{r}
+lm2 <- function(formula, data, freqs) {
+  # drop the original closure of formula,
+  # otherwise the formula will pick a wront variable from the global scope.
+  environment(formula) <- environment()
+  X <- model.matrix(reformulate(attr(terms(formula), "term.labels")), data)
+  y <- as.matrix(data[, all.vars(formula)[1]])
+  w <- freqs
+  rw <- sqrt(w)
+  rw <- as.vector(rw)
+  X_1 <- rw * X
+  y_1 <- rw * y
+  fit <- fast_lm(X_1, y_1)
+  fit$coefficients <- as.vector(fit$coefficient)
+  S <- attr(terms(formula), "term.labels")
+  names(fit$coefficients) <- colnames(X)
+  sigma = sqrt(sum(w * (fit$res^2)) / fit$df.residual)
+  list(coef = fit$coefficients, sigma = blbsigma(fit))
+}
+```
+
+The function lm2 is used to replace the function lm1 to return the same output but using the c++ code to perform. It uses the same arguments as function lm1 and convert the data into two matrixes, one for the explanatory variables data, and the other one for the response variable vector. It returns the estimated coefficients as a double and sigma calculated by residuals.
 
 ```{r}
 blblm <- function(formula, file, m = 10, B = 5000, cl = 1) {
@@ -126,7 +149,7 @@ glm1 <- function(formula, family, data, freqs) {
 }
 ```
 
-For the function glm1, the formula needs to be provided by the user, and the family is the error distribution and link function to be used in the model specified by the user. The data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function glm generates the generalized linear model with weights of argument freqs. It returns a list of the estimated coefficients and sigma calculated by function blbsigma.
+For the function glm1, the formula needs to be provided by the user, and the family is the error distribution and link function to be used in the model specified by the user. The data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function glm generates the generalized linear model with weights of argument freqs. It returns the estimated coefficients as a double and returns the sigma calculated by function blbsigma.
 
 ```{r}
 blbglm <- function(formula, family = gaussian, file, m = 10, B = 5000, cl = 1) {

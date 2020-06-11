@@ -1,11 +1,13 @@
 #' @import purrr
 #' @import furrr
 #' @import future
+#' @import Rcpp
 #' @importFrom vroom vroom_lines
 #' @importFrom readr read_csv
 #' @importFrom utils capture.output
 #' @import stats
 #' @importFrom magrittr %>%
+#' @useDynLib blblm
 #' @aliases NULL
 #' @details
 #' Linear Regression with Little Bag of Bootstraps
@@ -121,7 +123,7 @@ glm_each_subsample <- function(formula, family, data, n, B) {
 #' @return model
 lm_each_boot <- function(formula, data, n) {
   freqs <- rmultinom(1, n, rep(1, nrow(data)))
-  lm1(formula, data, freqs)
+  lm2(formula, data, freqs)
 }
 
 #' compute the regression estimates for a blb dataset
@@ -148,6 +150,31 @@ lm1 <- function(formula, data, freqs) {
   environment(formula) <- environment()
   fit <- lm(formula, data, weights = freqs)
   list(coef = blbcoef(fit), sigma = blbsigma(fit))
+}
+
+#' estimate the regression estimates based on given the number of repetitions
+#' @param formula fomula: V1~V2
+#' @param data dataframe
+#' @param freqs multinomially distributed random number vectors
+#'
+#' @return list
+lm2 <- function(formula, data, freqs) {
+  # drop the original closure of formula,
+  # otherwise the formula will pick a wront variable from the global scope.
+  environment(formula) <- environment()
+  X <- model.matrix(reformulate(attr(terms(formula), "term.labels")), data)
+  y <- as.matrix(data[, all.vars(formula)[1]])
+  w <- freqs
+  rw <- sqrt(w)
+  rw <- as.vector(rw)
+  X_1 <- rw * X
+  y_1 <- rw * y
+  fit <- fast_lm(X_1, y_1)
+  fit$coefficients <- as.vector(fit$coefficient)
+  S <- attr(terms(formula), "term.labels")
+  names(fit$coefficients) <- colnames(X)
+  sigma = sqrt(sum(w * (fit$res^2)) / (sum(w) - fit$rank))
+  list(coef = fit$coefficients, sigma = sigma)
 }
 
 #' estimate the regression estimates based on given the number of repetitions
