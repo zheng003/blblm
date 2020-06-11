@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>blblm</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">blblm</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(blblm)</a></code></pre></div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The documentation is intended for the convenience of blblm users based on integration of the documentation of library.</p>
+</div>
+<div id="blblm-linear-regression-with-little-bag-of-bootstraps" class="section level1">
+<h1>blblm (Linear Regression with Little Bag of Bootstraps)</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">split_data &lt;-<span class="st"> </span><span class="cf">function</span>(data, m) {</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  idx &lt;-<span class="st"> </span><span class="kw">sample.int</span>(m, <span class="kw">nrow</span>(data), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">split</span>(idx)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">}</a></code></pre></div>
+<p>For the split_data function, The first parameter is the dataset the user provided and the second parameter is the number of parts the user want to split the data into. This function will return a list of m datasets with approximated equal sizes and the sum of number of rows in these five dataset is the number of rows in the original dataset.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">lm_each_subsample &lt;-<span class="st"> </span><span class="cf">function</span>(formula, data, n, B) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw">replicate</span>(B, <span class="kw">lm_each_boot</span>(formula, data, n), <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">}</a></code></pre></div>
+<p>For the lm_each_subsample function, the formula needs to be provided by the user, and the data is the dataframe in the splited data list or in the list of files of datasets provided by the user. Argument n is the sum of total number of rows of the data list, and argument B specifies the total number of replication of bootstrap by m_each_boot(formula, data, n). It returns a list which includes B lists of estimates of coefficients and sigma.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">lm_each_boot &lt;-<span class="st"> </span><span class="cf">function</span>(formula, data, n) {</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  freqs &lt;-<span class="st"> </span><span class="kw">rmultinom</span>(<span class="dv">1</span>, n, <span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">nrow</span>(data)))</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="kw">lm1</span>(formula, data, freqs)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">}</a></code></pre></div>
+<p>For the function lm_each_boot, the formula needs to be provided by the user, and the data is the dataframe in the splited data list or in the list of files of datasets provided by the user. Argument n is the sum of total number of rows of the data list. The freqs generates the multinomially distributed random number vectors to use in the function lm1.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">lm1 &lt;-<span class="st"> </span><span class="cf">function</span>(formula, data, freqs) {</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw">environment</span>(formula) &lt;-<span class="st"> </span><span class="kw">environment</span>()</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  fit &lt;-<span class="st"> </span><span class="kw">lm</span>(formula, data, <span class="dt">weights =</span> freqs)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="kw">list</span>(<span class="dt">coef =</span> <span class="kw">blbcoef</span>(fit), <span class="dt">sigma =</span> <span class="kw">blbsigma</span>(fit))</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">}</a></code></pre></div>
+<p>For the function lm1, the formula needs to be provided by the user, and the data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function lm generates the linear model with weights of argument freqs. It returns the estimated coefficients as a double and returns the sigma calculated by function blbsigma.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">blbcoef &lt;-<span class="st"> </span><span class="cf">function</span>(fit) {</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="kw">coef</span>(fit)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">blbsigma &lt;-<span class="st"> </span><span class="cf">function</span>(fit) {</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">  p &lt;-<span class="st"> </span>fit<span class="op">$</span>rank</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">  y &lt;-<span class="st"> </span><span class="kw">model.extract</span>(fit<span class="op">$</span>model, <span class="st">&quot;response&quot;</span>)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">  e &lt;-<span class="st"> </span><span class="kw">fitted</span>(fit) <span class="op">-</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">  w &lt;-<span class="st"> </span>fit<span class="op">$</span>weights</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">  <span class="kw">sqrt</span>(<span class="kw">sum</span>(w <span class="op">*</span><span class="st"> </span>(e<span class="op">^</span><span class="dv">2</span>)) <span class="op">/</span><span class="st"> </span>(<span class="kw">sum</span>(w) <span class="op">-</span><span class="st"> </span>p))</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">}</a></code></pre></div>
+<p>The function blbcoef extracts model coefficients from the model and returns a double of the coefficients. The function blbsigma calculated the sigma by the weighted residuals and returns it as a double.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">lm2 &lt;-<span class="st"> </span><span class="cf">function</span>(formula, data, freqs) {</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="co"># drop the original closure of formula,</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="co"># otherwise the formula will pick a wront variable from the global scope.</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="kw">environment</span>(formula) &lt;-<span class="st"> </span><span class="kw">environment</span>()</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="kw">reformulate</span>(<span class="kw">attr</span>(<span class="kw">terms</span>(formula), <span class="st">&quot;term.labels&quot;</span>)), data)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  y &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(data[, <span class="kw">all.vars</span>(formula)[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  w &lt;-<span class="st"> </span>freqs</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">  rw &lt;-<span class="st"> </span><span class="kw">sqrt</span>(w)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">  rw &lt;-<span class="st"> </span><span class="kw">as.vector</span>(rw)</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">  X_<span class="dv">1</span> &lt;-<span class="st"> </span>rw <span class="op">*</span><span class="st"> </span>X</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">  y_<span class="dv">1</span> &lt;-<span class="st"> </span>rw <span class="op">*</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">  fit &lt;-<span class="st"> </span><span class="kw">fast_lm</span>(X_<span class="dv">1</span>, y_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">  fit<span class="op">$</span>coefficients &lt;-<span class="st"> </span><span class="kw">as.vector</span>(fit<span class="op">$</span>coefficient)</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">  S &lt;-<span class="st"> </span><span class="kw">attr</span>(<span class="kw">terms</span>(formula), <span class="st">&quot;term.labels&quot;</span>)</a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">  <span class="kw">names</span>(fit<span class="op">$</span>coefficients) &lt;-<span class="st"> </span><span class="kw">colnames</span>(X)</a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">  sigma =<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>(w <span class="op">*</span><span class="st"> </span>(fit<span class="op">$</span>res<span class="op">^</span><span class="dv">2</span>)) <span class="op">/</span><span class="st"> </span>fit<span class="op">$</span>df.residual)</a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">  <span class="kw">list</span>(<span class="dt">coef =</span> fit<span class="op">$</span>coefficients, <span class="dt">sigma =</span> <span class="kw">blbsigma</span>(fit))</a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">}</a></code></pre></div>
+<p>The function lm2 is used to replace the function lm1 to return the same output but using the c++ code to perform. It uses the same arguments as function lm1 and convert the data into two matrixes, one for the explanatory variables data, and the other one for the response variable vector. It returns the estimated coefficients as a double and sigma calculated by residuals.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">blblm &lt;-<span class="st"> </span><span class="cf">function</span>(formula, file, <span class="dt">m =</span> <span class="dv">10</span>, <span class="dt">B =</span> <span class="dv">5000</span>, <span class="dt">cl =</span> <span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  <span class="cf">if</span> (<span class="kw">class</span>(file)<span class="op">==</span><span class="st">&quot;data.frame&quot;</span>) {</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    data_list &lt;-<span class="st"> </span><span class="kw">split_data</span>(file, m)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    n =<span class="st"> </span><span class="kw">nrow</span>(file)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  }</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">    data_list &lt;-<span class="st"> </span><span class="kw">map</span>(file, read_csv,<span class="dt">col_types=</span> <span class="st">&quot;dd&quot;</span>)</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">    n =<span class="st"> </span><span class="kw">length</span>(<span class="kw">vroom_lines</span>(file))<span class="op">-</span><span class="kw">length</span>(file)</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">  <span class="cf">if</span> (cl <span class="op">!=</span><span class="dv">1</span>) {<span class="kw">suppressWarnings</span>(<span class="kw">plan</span>(multiprocess, <span class="dt">workers =</span> cl))}</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">  estimates &lt;-<span class="st"> </span><span class="kw">map</span>(</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">    data_list,</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">    <span class="op">~</span><span class="st"> </span><span class="kw">lm_each_subsample</span>(<span class="dt">formula =</span> formula, <span class="dt">data =</span> ., n, <span class="dt">B =</span> B))</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14">  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">estimates =</span> estimates, <span class="dt">formula =</span> formula)</a>
+<a class="sourceLine" id="cb8-15" data-line-number="15">  <span class="kw">class</span>(res) &lt;-<span class="st"> &quot;blblm&quot;</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16">  <span class="kw">invisible</span>(res)</a>
+<a class="sourceLine" id="cb8-17" data-line-number="17">}</a></code></pre></div>
+<p>For the blblm function, user need to specify the formula, and the dataset to use or a list of file of datasets to read. If the user provides a list of filename, it does not need to specify m, the number of parts the user want the dataset to split into as the list already split the datasets into parts. The user can specify B, the number of replication of the bootstrap or uses the default number of B. If the user do not want to use the parallelization, the user can just ignore the argument cl. If the user want to use more than one CPUs in the algorithm, the user can specify the number of cores want to use. The function will return m lists and each list includes B lists of estimated coefficients and sigma.</p>
+</div>
+<div id="blbglm-generalized-linear-models-with-little-bag-of-bootstraps" class="section level1">
+<h1>blbglm (Generalized linear models with Little Bag of Bootstraps)</h1>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">glm_each_subsample &lt;-<span class="st"> </span><span class="cf">function</span>(formula, family, data, n, B) {</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">  <span class="kw">replicate</span>(B, <span class="kw">glm_each_boot</span>(formula, family, data, n), <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">}</a></code></pre></div>
+<p>For the glm_each_subsample function, the formula needs to be provided by the user, and the family is the error distribution and link function to be used in the model specified by the user. The data is the dataframe in the splited data list or in the list of files of datasets provided by the user. Argument n is the sum of total number of rows of the data list, and argument B specifies the total number of replication of bootstrap by m_each_boot(formula, data, n). It returns a list which includes B lists of estimates of coefficients and sigma.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">glm_each_boot &lt;-<span class="st"> </span><span class="cf">function</span>(formula, family, data, n) {</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  freqs &lt;-<span class="st"> </span><span class="kw">rmultinom</span>(<span class="dv">1</span>, n, <span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">nrow</span>(data)))</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">  <span class="kw">glm1</span>(formula, family, data, freqs)</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">}</a></code></pre></div>
+<p>For the function glm_each_boot, the formula needs to be provided by the user, and the family is the error distribution and link function to be used in the model specified by the user. The data is the dataframe in the splited data list or in the list of files of datasets provided by the user. Argument n is the sum of total number of rows of the data list. The freqs generates the multinomially distributed random number vectors to use in the function lm1.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">glm1 &lt;-<span class="st"> </span><span class="cf">function</span>(formula, family, data, freqs) {</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">  <span class="co"># drop the original closure of formula,</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="co"># otherwise the formula will pick a wront variable from the global scope.</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="kw">environment</span>(formula) &lt;-<span class="st"> </span><span class="kw">environment</span>()</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  fit &lt;-<span class="st"> </span><span class="kw">glm</span>(formula, family, data, <span class="dt">weights =</span> freqs)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">  <span class="kw">list</span>(<span class="dt">coef =</span> <span class="kw">blbcoef</span>(fit), <span class="dt">sigma =</span> <span class="kw">blbsigma</span>(fit))</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">}</a></code></pre></div>
+<p>For the function glm1, the formula needs to be provided by the user, and the family is the error distribution and link function to be used in the model specified by the user. The data is the data list created by the function split data or by reading the list of files of datasets provided by the user. The enviroment drops the original closure of formula, otherwise the formula will pick a wrong variable from the global scope. The function glm generates the generalized linear model with weights of argument freqs. It returns the estimated coefficients as a double and returns the sigma calculated by function blbsigma.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(formula, <span class="dt">family =</span> gaussian, file, <span class="dt">m =</span> <span class="dv">10</span>, <span class="dt">B =</span> <span class="dv">5000</span>, <span class="dt">cl =</span> <span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="cf">if</span> (<span class="kw">class</span>(file)<span class="op">==</span><span class="st">&quot;data.frame&quot;</span>) {</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">    data_list &lt;-<span class="st"> </span><span class="kw">split_data</span>(file, m)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">    n =<span class="st"> </span><span class="kw">nrow</span>(file)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  }</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">    data_list &lt;-<span class="st"> </span><span class="kw">map</span>(file, read_csv,<span class="dt">col_types=</span> <span class="st">&quot;dd&quot;</span>)</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">    n =<span class="st"> </span><span class="kw">length</span>(<span class="kw">vroom_lines</span>(file))<span class="op">-</span><span class="kw">length</span>(file)</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">  <span class="cf">if</span> (cl <span class="op">!=</span><span class="dv">1</span>) {<span class="kw">suppressWarnings</span>(<span class="kw">plan</span>(multiprocess, <span class="dt">workers =</span> cl))}</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">  estimates &lt;-<span class="st"> </span><span class="kw">map</span>(</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">    data_list,</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">    <span class="op">~</span><span class="st"> </span><span class="kw">glm_each_subsample</span>(<span class="dt">formula =</span> formula, <span class="dt">family =</span> family, <span class="dt">data =</span> ., n, <span class="dt">B =</span> B))</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">estimates =</span> estimates, <span class="dt">formula =</span> formula)</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">  <span class="kw">class</span>(res) &lt;-<span class="st"> &quot;blbglm&quot;</span></a>
+<a class="sourceLine" id="cb12-16" data-line-number="16">  <span class="kw">invisible</span>(res)</a>
+<a class="sourceLine" id="cb12-17" data-line-number="17">}</a></code></pre></div>
+<p>For the blbglm function, user need to specify the formula, and the dataset to use or a list of file of datasets to read. If the user provides a list of filename, it does not need to specify m, the number of parts the user want the dataset to split into as the list already split the datasets into parts. If the user do not specify the error distribution, it will use the default gaussian distribution. The user can specify B, the number of replication of the bootstrap or uses the default number of B. If the user do not want to use the parallelization, the user can just ignore the argument cl. If the user want to use more than one CPUs in the algorithm, the user can specify the number of cores want to use. The function will return m lists and each list includes B lists of estimated coefficients and sigma.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">print.blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">  <span class="kw">cat</span>(<span class="st">&quot;blbglm model:&quot;</span>, <span class="kw">capture.output</span>(x<span class="op">$</span>formula))</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">  <span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">}</a></code></pre></div>
+<p>The function print with the argument blbglm model will print the formula uses for the model.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">sigma.blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(object, <span class="dt">confidence =</span> <span class="ot">FALSE</span>, <span class="dt">level =</span> <span class="fl">0.95</span>, ...) {</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">  est &lt;-<span class="st"> </span>object<span class="op">$</span>estimates</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">  sigma &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">map_dbl</span>(est, <span class="op">~</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">map_dbl</span>(., <span class="st">&quot;sigma&quot;</span>))))</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">  <span class="cf">if</span> (confidence) {</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">    alpha &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.95</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    limits &lt;-<span class="st"> </span>est <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">      </span><span class="kw">map_mean</span>(<span class="op">~</span><span class="st"> </span><span class="kw">quantile</span>(<span class="kw">map_dbl</span>(., <span class="st">&quot;sigma&quot;</span>), <span class="kw">c</span>(alpha <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha <span class="op">/</span><span class="st"> </span><span class="dv">2</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="st">      </span><span class="kw">set_names</span>(<span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">    <span class="kw">return</span>(<span class="kw">c</span>(<span class="dt">sigma =</span> sigma, <span class="dt">lwr =</span> limits[<span class="dv">1</span>], <span class="dt">upr =</span> limits[<span class="dv">2</span>]))</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="kw">return</span>(sigma)</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">  }</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">}</a></code></pre></div>
+<p>The function sigma with the argument blbglm model will return the mean sigma for all estimated sigma. If the user want the confidence interval for the sigma, the user can specify the argument confident into TRUE and choose the level of the confidence for the interval.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">coef.blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(object, ...) {</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  est &lt;-<span class="st"> </span>object<span class="op">$</span>estimates</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="kw">map_mean</span>(est, <span class="op">~</span><span class="st"> </span><span class="kw">map_cbind</span>(., <span class="st">&quot;coef&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rowMeans</span>())</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">}</a></code></pre></div>
+<p>The function coef with the argument blbglm model will return the mean coefficients for all estimated coefficients.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">confint.blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(object, <span class="dt">parm =</span> <span class="ot">NULL</span>, <span class="dt">level =</span> <span class="fl">0.95</span>, ...) {</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">  <span class="cf">if</span> (<span class="kw">is.null</span>(parm)) {</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">    parm &lt;-<span class="st"> </span><span class="kw">attr</span>(<span class="kw">terms</span>(object<span class="op">$</span>formula), <span class="st">&quot;term.labels&quot;</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">  alpha &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>level</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">  est &lt;-<span class="st"> </span>object<span class="op">$</span>estimates</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">  out &lt;-<span class="st"> </span><span class="kw">map_rbind</span>(parm, <span class="cf">function</span>(p) {</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">    <span class="kw">map_mean</span>(est, <span class="op">~</span><span class="st"> </span><span class="kw">map_dbl</span>(., <span class="kw">list</span>(<span class="st">&quot;coef&quot;</span>, p)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">quantile</span>(<span class="kw">c</span>(alpha <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">  })</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="cf">if</span> (<span class="kw">is.vector</span>(out)) {</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">    out &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">t</span>(out))</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">  }</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">  <span class="kw">dimnames</span>(out)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>parm</a>
+<a class="sourceLine" id="cb16-14" data-line-number="14">  out</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">}</a></code></pre></div>
+<p>The function confint with the argument blbglm model will return the confidence interval for the estimated coefficients. The user can specify which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered. The default confidence level is 0.95, and the user can specify the confidence level they want.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">predict.blbglm &lt;-<span class="st"> </span><span class="cf">function</span>(object, new_data, <span class="dt">confidence =</span> <span class="ot">FALSE</span>, <span class="dt">level =</span> <span class="fl">0.95</span>, ...) {</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">  est &lt;-<span class="st"> </span>object<span class="op">$</span>estimates</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">  X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="kw">reformulate</span>(<span class="kw">attr</span>(<span class="kw">terms.formula</span>(object<span class="op">$</span>formula, <span class="dt">data =</span> new_data), <span class="st">&quot;term.labels&quot;</span>)), new_data)</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="cf">if</span> (confidence) {</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">    <span class="kw">map_mean</span>(est, <span class="op">~</span><span class="st"> </span><span class="kw">map_cbind</span>(., <span class="op">~</span><span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>.<span class="op">$</span>coef) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="st">               </span><span class="kw">apply</span>(<span class="dv">1</span>, mean_lwr_upr, <span class="dt">level =</span> level) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="st">               </span><span class="kw">t</span>())</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">    <span class="kw">map_mean</span>(est, <span class="op">~</span><span class="st"> </span><span class="kw">map_cbind</span>(., <span class="op">~</span><span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>.<span class="op">$</span>coef) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rowMeans</span>())</a>
+<a class="sourceLine" id="cb17-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb17-11" data-line-number="11">}</a></code></pre></div>
+<p>The function predict with the argument blbglm model and the new data will return the predicted response value corresponding to the new data. The user can change the argument confidence to TRUE to return the confidence interval for the predicted response value. The default confidence level is 0.95, and the user can specify the confidence level they want.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
